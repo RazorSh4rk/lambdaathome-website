@@ -79,18 +79,23 @@ export function ApplicationSection() {
 
         <div className="mx-auto max-w-3xl">
           <h3 className="mb-6 text-center text-xl font-semibold">
-            Deploy in 3 steps
+            Deploy in 4 steps
           </h3>
           <div className="space-y-4">
             <Step
               num={1}
+              title="Install lambdaathome"
+              code={`curl -fsSL https://raw.githubusercontent.com/RazorSh4rk/lambdaathome/main/install.sh | sudo bash`}
+            />
+            <Step
+              num={2}
               title="Create a runtime"
               code={`curl -X POST -H "Authorization: $KEY" \\
   -F "file=@Dockerfile.python3" \\
   http://localhost:8080/runtime/upload/python-3`}
             />
             <Step
-              num={2}
+              num={3}
               title="Zip your code & deploy"
               code={`zip -r code.zip app.py requirements.txt
 
@@ -101,7 +106,7 @@ curl -X POST -H "Authorization: $KEY" \\
   http://localhost:8080/function/upload`}
             />
             <Step
-              num={3}
+              num={4}
               title="You're live"
               code={`# Your function is now accessible at:
 https://my-api.yourdomain.com`}
