@@ -12,25 +12,23 @@ const dashFeatures = [
     icon: <Gauge size={28} weight="duotone" />,
     title: "Live Overview",
     desc: "See all running containers, installed runtimes, function images, and base images at a glance.",
-    img: "https://placehold.co/600x340/1a1a2e/e0e0e0?text=Live+Overview",
+    img: "/overview.png",
   },
   {
     icon: <Upload size={28} weight="duotone" />,
     title: "One-Click Deploy",
     desc: "Upload your zip, select a runtime, set a port, and deploy — all from the browser.",
-    img: "https://placehold.co/600x340/1a1a2e/e0e0e0?text=Deploy+Page",
+    img: "/deploy.png",
   },
   {
     icon: <ListBullets size={28} weight="duotone" />,
     title: "Function Management",
     desc: "List, inspect, and delete functions. View container details, ports, and volume mounts.",
-    img: "https://placehold.co/600x340/1a1a2e/e0e0e0?text=Function+List",
   },
   {
     icon: <Gear size={28} weight="duotone" />,
     title: "Runtime Builder",
     desc: "Create custom Docker runtimes by uploading Dockerfiles. View and manage all runtimes.",
-    img: "https://placehold.co/600x340/1a1a2e/e0e0e0?text=Runtimes",
   },
 ];
 
@@ -55,12 +53,14 @@ export function DashboardSection() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {dashFeatures.map((f) => (
             <Card key={f.title} className="overflow-hidden bg-card">
-              <img
-                src={f.img}
-                alt={f.title}
-                className="h-48 w-full object-cover"
-                loading="lazy"
-              />
+              {"img" in f && (
+                <img
+                  src={f.img}
+                  alt={f.title}
+                  className="h-48 w-full object-cover"
+                  loading="lazy"
+                />
+              )}
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <div className="text-muted-foreground">{f.icon}</div>
